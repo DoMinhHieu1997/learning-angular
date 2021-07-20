@@ -1,0 +1,86 @@
+<div class="menu border-bottom">
+  <div class="banner d-none d-md-block">
+    <img width="100%" src="../assets/images/banner.png" />
+  </div>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light p-md-0 py-1">
+      <a class="nav-link px-0 d-md-none" aria-current="page" href="https://vietnamnet.vn/">
+        <img width="80rem" src="https://vnn-res.vgcloud.vn/ResV9/images/logo-vnn-hungcuong-d2.svg">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mx-auto align-items-center mt-3 mt-md-0">
+          <li class="nav-item d-none d-md-block">
+            <a class="nav-link" aria-current="page" href="https://vietnamnet.vn/">
+              <img width="80rem" src="https://vnn-res.vgcloud.vn/ResV9/images/logo-vnn-hungcuong-d2.svg">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" routerLink="/trang-chu" routerLinkActive="active">Thư viện</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" routerLink="/chinh-tri-gia" routerLinkActive="active">Chính trị gia</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" routerLink="/van-dong-vien" routerLinkActive="active">Vận động viên</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" routerLink="/cau-lac-bo" routerLinkActive="active">Câu lạc bộ bóng đá</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-4" routerLink="/sao" routerLinkActive="active">Sao</a>
+          </li>
+          <li class="nav-item dropdown d-none d-md-block">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Ủy viên trung ương Đảng</a></li>
+              <li><a class="dropdown-item" href="#">Ủy viên bộ chính trị</a></li>
+              <li><a class="dropdown-item" href="#">Bí thư tỉnh thành</a></li>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<div class="d-none d-md-block">
+  <div [hidden]="!isShow" (click)="gotoTop()" class="upToTop rounded-circle"></div>
+</div>
+<footer>
+  <div class="mt-5" >
+    <div class="container py-5 border-top">
+      <div class="row">
+        <div class="col-md-7 ">
+          <div class="row">
+            <div class="col-md-3 text-center">
+              <a href="/" class=" d-b">
+                <img src="https://vnn-res.vgcloud.vn/ResV9/images/logo-vnn-hungcuong-d2.svg">
+              </a>
+              <a class="d-block my-3 small color-red-main font-weight-500" href="/vn/thong-tin-toa-soan/">Liên hệ Tòa soạn</a>
+            </div>
+            <div class="col-md-9">
+              <div class="text-footer ">
+                <p><b>Cơ quan chủ quản: Bộ Thông tin và Truyền thông</b></p>
+                <p> Số giấy phép: 09/GP - BTTTT, cấp ngày 07/01/2019</p>
+                <p><b>Tổng biên tập: <span class="color-red-main">Phạm Anh Tuấn </span></b></p>
+                <p>Tòa soạn: Tòa nhà C'Land - 156 Xã Đàn 2, Đống Đa, Hà Nội</p>
+                <p> © <b>1997 Báo VietNamNet. All rights reserved.</b></p>
+                <p><i> Chỉ được phát hành lại thông tin từ website này khi có sự đồng ý bằng văn bảncủa báo VietNamNet. </i></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5 text-ads">
+          <p class="text-uppercase"><b>Liên hệ quảng cáo</b></p>
+          <p><b>Hà Nội. Hotline:</b> 0919 405 885 | <b>Email:</b><a href="mailto:vietnamnetjsc.hn@vietnamnet.vn">vietnamnetjsc.hn@vietnamnet.vn</a></p>
+          <p><b>Tp.HCM. Hotline:</b> 0919 435 885 | <b>Email:</b><a href="mailto:vietnamnetjsc.hcm@vietnamnet.vn">vietnamnetjsc.hcm@vietnamnet.vn</a></p>
+          <p>Xem thông tin chi tiết:<a href="http://vads.vn/" class="blue-link"> http://vads.vn/</a></p>
+          <p><b>Hỗ trợ kỹ thuật: </b><a href="mailto:support@tech.vietnamnet.vn">support@tech.vietnamnet.vn</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

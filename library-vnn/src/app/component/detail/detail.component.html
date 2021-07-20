@@ -1,0 +1,164 @@
+<div class="container mt-5">
+  <div class="row" *ngIf="!detailInfo">
+    <div class="col-md-3">
+      <div class="bg-loading ratio11"></div>
+      <div class="bg-loading mt-4 h-1d5"></div>
+      <div class="border-bottom pt-2"></div>
+      <div class="h-1d2 bg-loading w-50 mt-4"></div>
+      <div class="h-1d2 bg-loading w-75 mt-2"></div>
+      <div class="h-1d2 bg-loading w-75 mt-2"></div>
+      <div class="h-1d2 bg-loading w-75 mt-2"></div>
+      <div class="h-1d2 bg-loading w-75 mt-2"></div>
+      <div class="h-1d2 bg-loading w-75 mt-2"></div>
+    </div>
+    <div class="col-md-9">
+      <div class="title-tag rounded px-5 py-1 d-inline-block mb-4 font-weight-500">Tiểu sử nhân vật</div>
+      <div class="h-1d2 bg-loading w-75"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2 w-75"></div>
+      <div class="h-1d2 bg-loading mt-2 w-50"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2 w-75"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2 w-50"></div>
+      <div class="h-1d2 bg-loading w-75"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2 w-75"></div>
+      <div class="h-1d2 bg-loading mt-2 w-50"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2 w-75"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2 w-50"></div>
+    </div>
+  </div>
+  <!-- <div class="row" *ngIf="detailInfo">
+    <div class="col-md-4">
+      <div class="position-relative ratio43 bg-loading rounded overflow-hidden">
+        <div class="position-absolute full-wh rounded border overflow-hidden">
+          <img width="100%" src="{{detailInfo.avatar}}">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="h3 border-bottom w-50 mb-4 pb-2">{{detailInfo.lastName}} {{detailInfo.firstName}}</div>
+      <div class="h5 color-red-main">{{detailInfo.groupName}}</div>
+      <div class="h5">Nơi sinh: {{detailInfo.placeOfBirth}}</div>
+      <div class="h5">Ngày sinh: {{detailInfo.birthday}}</div>
+      <div class="h5">Nghề nghiệp: {{detailInfo.jobtitle}}</div>
+    </div>
+  </div> -->
+  <!-- <div>
+    <div class="title-tag rounded px-5 py-1 d-inline-block mt-5 mb-4 font-weight-500">Tiểu sử nhân vật</div>
+    <div class="px-4" *ngIf="!detailInfo">
+      <div class="h-1d2 bg-loading w-75"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2 w-75"></div>
+      <div class="h-1d2 bg-loading mt-2 w-50"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2 w-75"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2"></div>
+      <div class="h-1d2 bg-loading mt-2 w-50"></div>
+    </div>
+    <div class="px-4 mb-4" *ngIf="detailInfo">
+      <div [innerHTML]='detailInfo.story'></div>
+    </div>
+  </div> -->
+  <div class="row" *ngIf="detailInfo">
+    <div class="col-md-3">
+      <div class="position-relative ratio11 bg-loading rounded overflow-hidden mb-3">
+        <div class="position-absolute full-wh rounded border overflow-hidden">
+          <img width="100%" src="{{detailInfo.avatar}}">
+        </div>
+      </div>
+      <div class="h3 border-bottom mb-4 pb-2">{{detailInfo.lastName}} {{detailInfo.firstName}}</div>
+      <div class="h5 color-red-main">{{detailInfo.groupName}}</div>
+      <div class="font-weight-500 mb-2">{{detailInfo.jobtitle}}</div>
+      <div [hidden] = "isClub" class="font-weight-500 mb-2">Nơi sinh: {{detailInfo.placeOfBirth}}</div>
+      <div [hidden] = "!isClub" class="font-weight-500 mb-2">Nơi thành lập: {{detailInfo.placeOfBirth}}</div>
+      <div [hidden] = "isClub" class="font-weight-500 mb-2">Ngày sinh: {{detailInfo.birthday}}</div>
+      <div [hidden] = "!isClub" class="font-weight-500 mb-2">Ngày thành lập: {{detailInfo.birthday}}</div>
+    </div>
+    <div class="col-md-9 mt-5 mt-md-0">
+      <div [hidden] = "isClub">
+        <div class="title-tag rounded px-5 py-1 d-inline-block mb-4 font-weight-500">Tiểu sử nhân vật</div>
+      </div>
+      <div [hidden] = "!isClub">
+        <div class="title-tag rounded px-5 py-1 d-inline-block mb-4 font-weight-500">Tiểu sử câu lạc bộ</div>
+      </div>
+      <div class="mb-4 overflow-auto">
+        <div [innerHTML]='detailInfo.story'></div>
+      </div>
+    </div>
+  </div>
+  <div [hidden] = "hasImages">
+    <div [hidden] = "isClub" class="text-center">
+      <div class="title-tag rounded px-5 py-1 d-inline-block mt-5 mb-5 font-weight-500">Ảnh nhân vật</div>
+    </div>
+    <div [hidden] = "!isClub" class="text-center">
+      <div class="title-tag rounded px-5 py-1 d-inline-block mt-5 mb-5 font-weight-500">Ảnh câu lạc bộ</div>
+    </div>
+    <div class="row px-4" *ngIf="!listImages">
+      <div class="col-md-3 col-6" *ngFor="let member of [1,2,3,4]">
+        <div class="ratio43 bg-loading"></div>
+      </div>
+    </div>
+    <div *ngIf="listImages">
+      <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let image of listImages">
+              <div class="p-2">
+                <div class="position-relative ratio11">
+                  <div class="position-absolute full-wh bg-img rounded" style="background-image: url({{image.fileLink}})"></div>
+                </div>
+              </div>
+          </ng-template>
+      </owl-carousel-o>
+  </div>
+  </div>
+  <div [hidden] = 'hasRelatesNews'>
+    <div [hidden] = "isClub" class="text-center">
+      <div class="title-tag rounded px-5 py-1 d-inline-block mt-5 mb-5 font-weight-500">Tin tức nhân vật</div>
+    </div>
+    <div [hidden] = "!isClub" class="text-center">
+      <div class="title-tag rounded px-5 py-1 d-inline-block mt-5 mb-5 font-weight-500">Tin tức câu lạc bộ</div>
+    </div>
+    <div class="row" *ngIf="!relatedNews">
+      <div class="col-md-3 col-6 mb-4" *ngFor="let member of [1,2,3,4,5,6,7,8]">
+        <div class="rounded border">
+          <div class="ratio43 bg-loading"></div>
+          <div class="mt-2 p-2">
+            <div class="h-1d2 bg-loading"></div>
+            <div class="h-1d2 bg-loading mt-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" *ngIf="relatedNews">
+      <div class="col-md-3 col-6 mb-4" *ngFor="let news of relatedNews">
+        <a href="https://vietnamnet.vn{{news.link}}">
+          <div class="rounded border h-100 overflow-hidden">
+            <div class="position-relative ratio43">
+              <div class="position-absolute full-wh bg-img" style="background-image: url({{news.image}})"></div>
+            </div>
+            <div class="p-1 p-md-3">
+              <div class="font-weight-500">{{news.title}}</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="text-center py-1" [hidden] = "showloading">
+      <div class="spinner-border text-secondary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <div class="text-center" [hidden] = "!showloadMore">
+      <div class="btn btn-small btn-loadmore font-weight-500 px-5 rounded-3r" (click)="getMoreRelatedNews(paramAlias,page)">Xem thêm</div>
+    </div>
+  </div>
+</div>

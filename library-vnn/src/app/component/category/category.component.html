@@ -1,0 +1,34 @@
+<div class="container mt-md-5 pt-5">
+  <div class="position-relative bg-secondary mx-auto px-4 col-6 col-md-3" style="height: 3px;">
+    <div class="position-absolute bg-white h4 px-3 text-nowrap text-uppercase position-center">{{title | conTitle}}</div>
+  </div>
+  <div class="pt-3">
+    <div class="row mt-5" *ngIf="!initLoad">
+      <div class="col-md-3 col-6 mb-4" *ngFor="let member of array">
+          <div class="ratio43 bg-loading"></div>
+          <div class="mt-3">
+              <div class="h-1d5 bg-loading"></div>
+          </div>
+      </div>
+    </div>
+    <div class="row mt-5" *ngIf="list">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let member of list">
+            <a href="/chi-tiet/{{member.alias}}">
+              <div class="position-relative ratio43 bg-loading rounded detail-tag overflow-hidden">
+                <div class="position-absolute full-wh bg-img rounded" style="background-image: url({{member.avatar}})"></div>
+                <div class="position-absolute p-3 w-100 text-center text-white detail-direct d-none d-md-block">Xem chi tiết</div>
+              </div>
+              <div class="mt-3 font-weight-500 text-center">{{member.lastName}} {{member.firstName}}</div>
+            </a>
+        </div>
+    </div>
+  </div>
+  <div class="text-center py-1" [hidden] = 'showLoading'>
+    <div class="spinner-border text-secondary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <div class="text-center" [hidden] = '!showMore'>
+    <div class="btn btn-small btn-loadmore font-weight-500 px-4 rounded-3r" (click)="getDataByPath()">Xem thêm</div>
+  </div>
+</div>

@@ -1,0 +1,193 @@
+<div class="container mt-md-5 pt-md-4">
+  <div class="row">
+    <div class="col-md-6 bg-d7e3ef94 py-3">
+        <div class="color-red-main mb-4 h4">Tiêu điểm trong ngày</div>
+        <div class="row loading" *ngIf="!infor">
+            <div class="col-md-5">
+                <div class="bg-loading" style="padding-top: 120%;"></div>
+            </div>
+            <div class="col-md-7">
+                <div class="bg-loading col-md-6 h-1d5"></div>
+                <hr class="mt-1 mb-3" style="background: #971927; width:25%; height:2px; opacity:1;">
+                <div class="bg-loading col-md-7 mb-2 h-1d2" style="height: 1.2rem;"></div>
+                <div class="bg-loading col-md-7 mb-2 h-1d2" style="height: 1.2rem;"></div>
+                <div class="bg-loading col-md-7 mb-2 h-1d2" style="height: 1.2rem;"></div>
+                <div class="bg-loading col-md-7 mb-2 h-1d2" style="height: 1.2rem;"></div>
+                <div class="bg-loading col-md-9 mb-2 h-1d2" style="height: 1.2rem;"></div>
+                <div class="bg-loading col-md-9 mb-2 h-1d2" style="height: 1.2rem;"></div>
+                <div class="bg-loading col-md-9 mb-2 h-1d2" style="height: 1.2rem;"></div>
+                <div class="bg-loading col-md-9 mb-2 h-1d2" style="height: 1.2rem;"></div>
+            </div>
+        </div>
+        <div class="row" *ngIf="infor">
+            <div class="col-md-6" >
+              <a href="/chi-tiet/{{infor.alias}}">
+                <img width="100%" src="{{infor.avatar}}"/>
+              </a>
+            </div>
+            <div class="col-md-6 mt-4 mt-md-0">
+                <div class="h5">{{infor.lastName}} {{infor.firstName}}</div>
+                <hr class="mt-1 mb-3 ml-0" style="background: #971927; width:25%; height:2px; opacity:1;">
+                <div>Chức vụ: {{infor.title}}</div>
+                <div>Nơi sinh: {{infor.placeOfBirth}}</div>
+                <div>Ngày sinh: {{infor.birthday}}</div>
+                <div [innerHTML]='story'></div>
+            </div>
+            <div class="col-12 text-right mt-3 font-weight-500">
+              <a href="/chi-tiet/{{infor.alias}}">Xem chi tiết</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 related-news mt-md-0 mt-4">
+        <div class="border-bottom pb-1 mb-3 h4">Tin tức liên quan</div>
+        <div class="row" *ngIf="!relatednews">
+            <div class="col-md-6 row mb-2" *ngFor="let new of relatednews">
+                <div class="col-6">
+                    <div class="ratio43 bg-loading"></div>
+                </div>
+                <div class="col-6 p-0">
+                    <div class="bg-loading h-1d1 mb-2"></div>
+                    <div class="bg-loading h-1d1 mb-2"></div>
+                    <div class="bg-loading h-1d1 mb-2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="relatednews">
+            <div class="col-md-6 mb-2" *ngFor="let new of relatednews">
+                <div class="row">
+                    <div class="col-md-6 col-5 pr-0 pr-md-2">
+                        <img width="100%" src="{{new.image}}"/>
+                    </div>
+                    <div class="col-md-6 col-7 p-md-0">
+                        <div class="fs-0d85">{{new.title}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="text-center mt-5">
+    <div class="d-inline-block mx-auto h4">Nhân vật nổi bật</div>
+    <div class="mt-1 mb-5 col-md-1 col-4 mx-auto title-line"></div>
+    <div *ngIf="highlight">
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let member of highlight">
+                <div class="p-2">
+                  <a href="/chi-tiet/{{member.alias}}">
+                    <img src="{{member.avatar}}"/>
+                    <div class="py-3 font-weight-500 bg-antiquewhite">{{member.lastName}} {{member.firstName}}</div>
+                  </a>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+  </div>
+  <div class="text-center mt-5 pb-5">
+    <div class="d-inline-block mx-auto h4">Chính trị gia</div>
+    <div class="mt-1 mb-5 col-md-1 col-4 mx-auto title-line"></div>
+    <div class="row" *ngIf="!politician">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let member of [1,2,3,4,5,6,7,8]">
+            <div class="ratio43 bg-loading"></div>
+            <div class="mt-3">
+                <div class="h-1d5 bg-loading"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="politician">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let member of politician">
+            <a href="/chi-tiet/{{member.alias}}">
+                <div class="position-relative ratio11 border rounded overflow-hidden">
+                    <div class="position-absolute full-wh bg-img" style="background-image: url({{member.avatar}})"></div>
+                </div>
+                <div class="mt-3 font-weight-500">{{member.lastName}} {{member.firstName}}</div>
+            </a>
+        </div>
+    </div>
+    <div class="text-center">
+      <a href="/chinh-tri-gia">
+        <div class="btn btn-small btn-loadmore font-weight-500 px-4 rounded-3r">Xem thêm</div>
+      </a>
+    </div>
+  </div>
+  <div class="text-center mt-5 pb-5">
+    <div class="d-inline-block mx-auto h4">Vận động viên</div>
+    <div class="mt-1 mb-5 col-md-1 col-4 mx-auto title-line"></div>
+    <div class="row" *ngIf="!athlete">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let member of [1,2,3,4,5,6,7,8]">
+            <div class="ratio43 bg-loading"></div>
+            <div class="mt-3">
+                <div class="h-1d5 bg-loading"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="athlete">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let member of athlete">
+            <a href="/chi-tiet/{{member.alias}}">
+                <div class="position-relative  ratio11 border rounded overflow-hidden">
+                    <div class="position-absolute full-wh bg-img" style="background-image: url({{member.avatar}})"></div>
+                </div>
+                <div class="mt-3 font-weight-500">{{member.lastName}} {{member.firstName}}</div>
+            </a>
+        </div>
+    </div>
+    <div class="text-center">
+      <a href="/van-dong-vien">
+        <div class="btn btn-small btn-loadmore font-weight-500 px-4 rounded-3r">Xem thêm</div>
+      </a>
+    </div>
+  </div>
+  <div class="text-center mt-5 pb-5">
+    <div class="d-inline-block mx-auto h4">Câu lạc bộ</div>
+    <div class="mt-1 mb-5 col-md-1 col-4 mx-auto title-line"></div>
+    <div class="row" *ngIf="!club">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let member of [1,2,3,4,5,6,7,8]">
+            <div class="ratio43 bg-loading"></div>
+            <div class="mt-3">
+                <div class="h-1d5 bg-loading"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="club">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let member of club">
+            <a href="/chi-tiet/{{member.alias}}">
+                <div class="position-relative ratio11 border rounded overflow-hidden">
+                    <div class="position-absolute full-wh bg-img" style="background-image: url({{member.avatar}})"></div>
+                </div>
+                <div class="mt-3 font-weight-500">{{member.lastName}} {{member.firstName}}</div>
+            </a>
+        </div>
+    </div>
+    <div class="text-center">
+      <a href="/cau-lac-bo">
+        <div class="btn btn-small btn-loadmore font-weight-500 px-4 rounded-3r">Xem thêm</div>
+      </a>
+    </div>
+  </div>
+  <div class="text-center mt-5 pb-5">
+    <div class="d-inline-block mx-auto h4">Sao</div>
+    <div class="mt-1 mb-5 col-md-1 col-4 mx-auto title-line"></div>
+    <div class="row" *ngIf="!star">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let member of [1,2,3,4,5,6,7,8]">
+            <div class="ratio43 bg-loading"></div>
+            <div class="mt-3">
+                <div class="h-1d5 bg-loading"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="star">
+        <div class="col-md-3 col-6 mb-4" *ngFor="let member of star">
+            <a href="/chi-tiet/{{member.alias}}">
+                <div class="position-relative ratio11 border rounded overflow-hidden">
+                    <div class="position-absolute full-wh bg-img" style="background-image: url({{member.avatar}})"></div>
+                </div>
+                <div class="mt-3 font-weight-500">{{member.lastName}} {{member.firstName}}</div>
+            </a>
+        </div>
+    </div>
+    <div class="text-center">
+      <a href="/sao">
+        <div class="btn btn-small btn-loadmore font-weight-500 px-4 rounded-3r">Xem thêm</div>
+      </a>
+    </div>
+  </div>
+</div>
